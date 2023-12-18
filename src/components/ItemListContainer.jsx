@@ -1,8 +1,20 @@
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = ({productsData}) => {
+    console.log(productsData)
     return (
         <div style={{textAlign: 'center', marginTop: '230px', fontSize: '3rem'}}>
-            {greeting}
-            <p style={{fontSize: '1rem'}}>Estamos creando nuestro sitio👷‍♂️🔧</p>
+                <div>
+                    {
+                        productsData.map(products => {
+                            return(
+                                <div key={products.id}>
+                                    <div>{products.title}</div>
+                                    <div>{products.description}</div>
+                                    <div>{products.price}</div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
     )
 } 

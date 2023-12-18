@@ -1,12 +1,27 @@
-import NavBar from "./components/NavBar/NavBar";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect, useState } from "react";
 import ItemListContainer from "./components/ItemListContainer";
- const App = () => {
+import NavBar from "./components/NavBar/NavBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { getProducts } from "./services";
+
+const App = () => {
+  const [productsData, setProductsData] = useState([]);
+
+  useEffect(() => {
+    getProducts()
+      .then((response) => {
+        setProductsData(response.data.products);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
-  <div style={{width: '100vw', height: '100vh'}}>
-    <NavBar/>
-    <ItemListContainer greeting="Bienvenidos a Rhino Store®"/>
-  </div>
-  )
-}
-export default App; 
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <NavBar />
+      <ItemListContainer productsData={productsData} />
+    </div>
+  );
+};
+export default App;
