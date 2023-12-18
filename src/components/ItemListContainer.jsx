@@ -1,20 +1,27 @@
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 const ItemListContainer = ({productsData}) => {
     console.log(productsData)
     return (
-        <div style={{textAlign: 'center', marginTop: '230px', fontSize: '3rem'}}>
+        <div style={{textAlign: 'center', marginTop: '230px', fontSize: '1rem'}}>
                 <div>
                     {
                         productsData.map(products => {
                             return(
-                                <div key={products.id}>
-                                    <div>{products.title}</div>
-                                    <div>{products.description}</div>
-                                    <div>{products.price}</div>
-                                </div>
-                            )
+                                <Card key={products.id} style={{ width: '18rem' }}>
+                                <Card.Img variant="top" src={products.thumbnail} />
+                                <Card.Body>
+                                  <Card.Title>{products.title}</Card.Title>
+                                  <Card.Text>{products.description}</Card.Text>
+                                  <Card.Text>${products.price}</Card.Text>
+                                  <Button variant="primary">Go somewhere</Button>
+                                </Card.Body>
+                              </Card>
+                            );
                         })
                     }
-                </div>
+                </div> 
             </div>
     )
 } 
