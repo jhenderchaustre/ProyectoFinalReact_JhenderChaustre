@@ -1,18 +1,17 @@
 import {useState, useEffect} from "react";
 import { getCategories, getProductById, getProducts, getProductsByCategory } from "../services";
+import { collection, getDocs, getFirestore} from "firebase/firestore"
 
 export const useGetProducts = (limit = 10) => {
     const [productsData, setProductsData] = useState([]);
+    useEffect (() => {
+        const db = getFirestore ();
+        const ProductsCollection = collection (db, 'products');
 
-    useEffect(() => {
-        getProducts(limit)
-          .then((response) => {
-            setProductsData(response.data.products);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }, []);
+        getDocs(ProductsCollection).then((snapshot) => {
+          setProductsData(snapshot.docs.map(doc => ({id: doc.id, ...doc.data()})))
+        })
+    }, []); 
 
       return {productsData}
 
