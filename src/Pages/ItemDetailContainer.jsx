@@ -5,7 +5,7 @@ import ItemCount from '../components/NavBar/ItemCount';
 
 export const ItemDetailContainer = () => {
   const { id } = useParams()
-  const {productData} = useGetProductById (id)
+  const {productData} = useGetProductById ("products", id)
   return (
     <Card key={productData.id} style={{ width: '18rem', margin: '20px' }}>
           <Card.Img variant="top" src={productData.thumbnail} />
