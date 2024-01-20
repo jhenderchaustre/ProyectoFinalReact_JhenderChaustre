@@ -27,12 +27,13 @@ const NavBar = () => {
                   )
                 })
               }
-               </NavDropdown>
+               </NavDropdown> 
             </Nav>
           </Navbar.Collapse>
+          <Link to="/create-product">Crear Producto</Link>
           <CartWidget />
         </Container>
-      </Navbar>
+      </Navbar> 
     );
   };
   

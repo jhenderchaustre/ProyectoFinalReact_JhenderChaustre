@@ -3,6 +3,7 @@ import Home from "../Pages/Home"
 import Category from "../Pages/Category"
 import ItemDetailContainer from "../Pages/ItemDetailContainer"
 import NavBar from "../components/NavBar/NavBar";
+import CreateProduct from "../Pages/CreateProduct";
 
 const MainRouter = () => {
   return (
@@ -12,8 +13,7 @@ const MainRouter = () => {
             <Route path="/" element={<Home />} />
             <Route path="/category/:id" element={<Category />} />
             <Route path="/item/:id" element={<ItemDetailContainer />} />
-
-
+            <Route path="/create-product" element={<CreateProduct />}/>
         </Routes>
     </BrowserRouter>
   )
