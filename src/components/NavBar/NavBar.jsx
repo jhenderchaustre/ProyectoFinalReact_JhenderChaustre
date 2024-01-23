@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
-import { useGetCategories } from '../../hooks/useProducts';
+import { useGetCategories} from '../../hooks/useProducts';
 
 const NavBar = () => {
 

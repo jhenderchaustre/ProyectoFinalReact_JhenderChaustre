@@ -32,17 +32,20 @@ export const useGetProductById = (collectionName = "products", id) => {
  
 }
 
-export const useGetCategories = () => {
+
+export const useGetCategories = (collectionName = 'categories') => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-      getCategories()
-        .then((response) => {
-          setCategories(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      const db = getFirestore();
+      const ProductsCollection = collection(db, collectionName);
+
+      getDocs(ProductsCollection).then((snapshot) => {
+        const categories = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
+        setCategories (
+          categories[0].categories
+        );
+      });
     }, []);
 
     return {categories}
