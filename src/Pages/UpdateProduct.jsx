@@ -73,13 +73,7 @@ const UpdateProduct = () => {
         value={thumbnail}
         onChange={(e) => setThumbnail(e.target.value)}
       />
-
-      {/* <select onChange={(e) => setCategory(e.target.value)}>
-        {categories.map((category, index) => (
-          <option key={index} value={category}>{category}</option>
-        ))}
-      </select> */}
-
+      
       <button onClick={handleUpdateProduct}>Actualizar</button>
     </div>
   )
