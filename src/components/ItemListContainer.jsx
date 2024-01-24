@@ -13,7 +13,9 @@ const ItemListContainer = ({ productsData }) => {
             <Card.Title>{products.title}</Card.Title>
             <Card.Text>{products.description}</Card.Text>
             <Card.Text>${products.price}</Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Link to={`/item/${products.id}`}>
+          <Button variant="primary">Agregar al Carrito</Button>
+        </Link>
           </Card.Body>
         </Card>
       ))}
